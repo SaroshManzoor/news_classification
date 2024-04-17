@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "news-classification"
+version = "0.1.0"
+description = ""
+authors = ["Sarosh Manzoor <sarosh.manzoor@spryfox.de>"]
+readme = "README.md"
+packages = [{ include = "news_classification" }]
+
+
+[tool.poetry.dependencies]
+python = "3.9.1"
+pandas = "1.5.3"
+scikit-learn = "1.4.2"
+nltk = "3.8.1"
+lightgbm = "4.3.0"
+imblearn = "0.0"
+sentence-transformers = "2.2.2"
+huggingface-hub = "0.19.4"
+torch = "2.1.2"
+streamlit = "1.33.0"
+openpyxl = "3.1.2"
+seaborn = "0.13.2"
+pydantic = "2.7.0"
+
+[tool.poetry.group.dev.dependencies]
+black = { extras = ["d"], version = "24.4.0" }
+jupyter = "1.0.0"
+matplotlib = "3.8.4"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

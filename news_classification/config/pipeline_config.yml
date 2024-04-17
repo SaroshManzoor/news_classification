@@ -1,0 +1,33 @@
+# - - - - -  Data
+
+# The pipeline expects the training and inference files to be in storage/data/
+training_filename: CPS_use_case_classification_training.json
+inference_filename: CPS_use_case_classification_response.json
+results_filename: predictions.json
+
+
+# - - - - -  Data Preprocessing
+# Refining step merges similar classes. This mapping is defined in:
+# news_classification/config/class_corrections.py
+refine_classes: true
+
+# Basic cleaning is performed on headlines
+preprocess: true
+
+# Lemmatize headlines. Only works if preprocess is true
+lemmatize: false
+
+# Remove stop words from headlines. Only works if preprocess is true
+remove_stop_words: false
+
+
+# - - - - -  Feature Extraction
+# The name of the feature extractor class. Full list at:
+# news_classification/data_handling/feature_extractors/__init__.py
+feature_extractor_name: EmbeddingsExtractor
+
+
+# - - - - -  Classifier
+# The name of the classifier to be trained. Full list at:
+# news_classification/modelling/classifiers/__init__.py
+classifier_name: BoostingClassifier
