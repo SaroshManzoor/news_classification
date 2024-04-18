@@ -21,7 +21,7 @@ The "headline" attribute of news articles is used as the main predictor. An appr
 ## <center> Usage 
 <br>
 
-Pipeline and Live Inference can be accesses in two ways.
+Pipeline and Live Inference can be accessed in two ways.
 ### 1. Via Docker:
 This will bypass all dependency management but depending on the models used, could take anywhere from 5 to 30 minutes to complete the pipeline, as GPU support is not guaranteed.
 With the current defaults, it should take about 5 minutes for the pipeline to run.
