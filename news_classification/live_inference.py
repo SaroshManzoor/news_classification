@@ -7,7 +7,15 @@ from news_classification.modelling.classifiers import (
 )
 
 
-def inference_app(classifier: BaseClassifier):
+def inference_app(classifier: BaseClassifier) -> None:
+    """
+    Renders a basic UI to interact with a trained classifier
+
+    :param classifier:
+        trained classifier
+    :return:
+    """
+    # Setting dark theme
     st.set_page_config()
     st.markdown(
         """
@@ -25,6 +33,7 @@ def inference_app(classifier: BaseClassifier):
     # Blank space
     st.markdown("#")
 
+    # Text Input section
     headline = st.text_input(
         "Insert news headline",
         key="placeholder",

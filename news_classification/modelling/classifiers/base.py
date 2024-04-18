@@ -22,6 +22,16 @@ from news_classification.utils.paths import (
 
 
 class BaseClassifier(ABC):
+    """
+    Abstract base class for all classifiers to be implemented.
+    Offers an interface for new models so that they are compatible with
+    the pipeline.
+    The two main abstract methods are:
+
+    train()
+    predict()
+
+    """
     NAME = ""
 
     def __init__(

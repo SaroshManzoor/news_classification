@@ -42,6 +42,8 @@ chmod +x run_inference.sh
 ```
 then navigate to: http://0.0.0.0:8000
 
+Currently, a new docker image is built each time the run scripts are triggered. This is suboptimal but simpler for users. An improved strategy could be implemented e.g. by rebuilding the image only when a specified argument is provided while running the script.
+
 
 ### 2. Local Environment:
 This  would be much faster, especially if GPU is available. However, it necessitates that virtual environment is correctly generated.
@@ -76,8 +78,6 @@ The choice of classifier and feature extractor, among other settings, can be set
   news_classification/config/pipeline_config.yml
   ```
 "EmbeddingsExtractor" generally outperforms other feature extractors but can be very slow during a docker run. <br>
-For a quick-run, set the feature_extractor_name parameter of the pipeline_config.yml to "TfIdfExtractor".
-<br>
 <br>
 
 After the training, the classifier performance can be viewed in the model_registry:
