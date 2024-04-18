@@ -20,7 +20,6 @@ def get_device(gpu=True):
             if device_label == "cpu":
                 if torch.cuda.is_available():
                     device_label = torch.device("cuda:0")
-                    torch.backends.cudnn.benchmark = True
 
     return device_label
 

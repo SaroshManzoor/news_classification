@@ -78,7 +78,7 @@ def preprocess_headlines(
         logging.info("Removing stop words.")
 
         headlines = headlines.apply(
-            _remove_stop_words, stop_words=stopwords.words("english")
+            _remove_stop_words, stop_words=get_stop_words()
         )
 
     if lemmatize:
@@ -103,3 +103,16 @@ def get_wordnet_lemmatizer() -> WordNetLemmatizer:
         nltk.download("wordnet")
 
     return lemmatizer
+
+
+def get_stop_words():
+    # Verifying that corresponding corpus is also downloaded
+    try:
+        stop_words = stopwords.words("english")
+    except LookupError:
+        import nltk
+
+        nltk.download("stopwords")
+        stop_words = stopwords.words("english")
+
+    return stop_words

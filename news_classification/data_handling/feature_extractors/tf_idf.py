@@ -16,8 +16,10 @@ class TfIdfExtractor(FeatureExtractor):
         super().__init__()
         self.normalize = normalize
 
+        # setting min_df/max_features to a higher value could result
+        # in memory issues, however will improve classifier performance.
         _tf_idf = TfidfVectorizer(
-            min_df=1e-4, stop_words="english", use_idf=True
+            min_df=1e-3, stop_words="english", use_idf=True
         )
 
         self.transformer = _tf_idf

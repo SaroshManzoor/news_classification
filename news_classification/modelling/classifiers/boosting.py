@@ -16,9 +16,6 @@ from news_classification.utils.utils import to_percentage
 
 
 class BoostingClassifier(BaseClassifier):
-    """
-    Light-GBM classifier.
-    """
 
     NAME = "BoostingClassifier"
 
@@ -30,7 +27,7 @@ class BoostingClassifier(BaseClassifier):
         )
 
         self.model = LGBMClassifier(
-            n_estimators=200,
+            n_estimators=100,
             n_jobs=-1,
             class_weight="balanced",
             random_state=SEED,

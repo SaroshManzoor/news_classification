@@ -13,22 +13,22 @@ refine_classes: false
 
 # Basic cleaning is performed on headlines
 # Consider setting to false for EmbeddingsExtractor
-preprocess: false
+preprocess: true
 
 # Lemmatize headlines. Only works if preprocess is true
-lemmatize: false
+lemmatize: true
 
 # Remove stop words from headlines. Only works if preprocess is true
-remove_stop_words: false
+remove_stop_words: true
 
 
 # - - - - -  Feature Extraction
 # The name of the feature extractor class. Full list at:
 # news_classification/data_handling/feature_extractors/__init__.py
-feature_extractor_name: EmbeddingsExtractor
+feature_extractor_name: TfIdfExtractor
 
 
 # - - - - -  Classifier
 # The name of the classifier to be trained. Full list at:
 # news_classification/modelling/classifiers/__init__.py
-classifier_name: LogisticRegressionClassifier
+classifier_name: BoostingClassifier

@@ -16,6 +16,8 @@ docker run --name news_classification_pipeline -it news_classification_pipeline 
 printf "\n Dumping predictions and trained model to storage directory \n"
 container_id=$(docker ps -aqf 'name=news_classification_pipeline')
 docker cp "$container_id":/src/storage/data/predictions.json storage/data/predictions.json
+
+# This is a suboptimal step and could be improved
 docker cp "$container_id":/src/storage/model_registry/. storage/model_registry
 
 

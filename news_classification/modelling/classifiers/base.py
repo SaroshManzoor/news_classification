@@ -63,8 +63,6 @@ class BaseClassifier(ABC):
 
     def evaluate(self, x_test: ArrayLike, y_test: ArrayLike):
         """
-
-
         :param x_test:
         :param y_test:
         :return:
