@@ -16,7 +16,7 @@ This is a rudimentary UI to predict the categories for a user-defined headline.
 The "headline" attribute of news articles is used as the main predictor. An approach with full or partial article text, scrapped from the corresponding "link" was considered but not implemented due to the lack of time.
 <br>
 <br>
-Note: Current default arguments of pipeline are optimized for training speed and not best accuracy score. See the performance section below for details.
+<ins>Note: Current default arguments of pipeline are optimized for training speed and not best accuracy score. See the performance section below for details.</ins>.
 
 ## <center> Usage 
 <br>
