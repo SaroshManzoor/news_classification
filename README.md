@@ -27,7 +27,7 @@ This will bypass all dependency management but depending on the models used, cou
 With the current defaults, it should take about 5 minutes for the pipeline to run.
 
 
-To run the end-to-pipeline i.e. execute the following in a terminal:
+To run the end-to-pipeline, execute the following in a terminal:
 ```
 chmod +x run_pipeline.sh
 ./run_pipeline.sh
