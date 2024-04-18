@@ -5,6 +5,9 @@ RUN apt-get update
 
 RUN pip install poetry -U
 
+# This is required for LGBM to work properly
+ENV LD_PRELOAD='/usr/lib/aarch64-linux-gnu/libgomp.so.1'
+
 COPY . /src
 
 WORKDIR /src

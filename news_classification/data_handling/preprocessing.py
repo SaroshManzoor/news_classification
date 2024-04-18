@@ -42,6 +42,25 @@ def _remove_stop_words(text: str, stop_words: list[str]) -> str:
 def preprocess_headlines(
     headlines: pd.Series, remove_stop_words=True, lemmatize=True
 ) -> pd.Series:
+    """
+    Performs basic clean-up of headlines. i.e.:
+        - removing non-alphabet characters (except spaces)
+        - removing multiple blank spaces
+
+    Additionally, this method can also be used to discard all stop words
+    and to lemmatize all headlines by using the corresponding input
+    arguments.
+
+    :param headlines:
+        series containing new headlines
+    :param remove_stop_words:
+        boolean to remove or accept stop words
+    :param lemmatize:
+        boolean to enable lemmatization
+
+    :return:
+        preprocessed headlines
+    """
     headlines = headlines.str.lower()
 
     logging.info("Cleaning-up article headlines.")

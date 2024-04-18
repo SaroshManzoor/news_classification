@@ -65,8 +65,8 @@ class CustomMLPClassifier(BaseClassifier):
         )
         del headlines, categories
 
-        # Use headlines with at least 4 words/tokens for training
-        x_train = x_train[x_train.apply(lambda x: len(x.split())) >= 4]
+        # Use headlines with at least 2 words/tokens for training
+        x_train = x_train[x_train.apply(lambda x: len(x.split())) >= 2]
         y_train = y_train.loc[x_train.index]
 
         x_train = self.feature_extractor.fit_transform(x_train)

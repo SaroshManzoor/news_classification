@@ -29,13 +29,27 @@ def get_model_registry_path() -> str:
     Returns the absolute path for the model registry.
     Model registry stores the trained model objects.
 
-    :return: model_registry directory path
+    :return:
+        model_registry directory path
     """
     registry_path = os.path.join(PROJECT_PATH, "storage", "model_registry")
     os.makedirs(registry_path, exist_ok=True)
 
     return registry_path
 
+
+def get_model_cache_path() -> str:
+    """
+    Returns the absolute path cache directory.
+
+    The cache is primarily meant for the model downloaded by
+    sentence-transformers.
+
+    :return:
+        model_registry directory path
+    """
+
+    return os.path.join(PROJECT_PATH, ".cache")
 
 def get_config_path() -> str:
     """

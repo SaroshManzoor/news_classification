@@ -1,13 +1,13 @@
 import streamlit as st
 
-from news_classification.modelling.classifiers.boosting import (
-    BoostingClassifier,
+from news_classification.config.pipeline_config import PipelineConfig
+from news_classification.modelling.classifiers import (
+    BaseClassifier,
+    classifier_map,
 )
 
-classifier = BoostingClassifier.load()
 
-
-def inference_app():
+def inference_app(classifier: BaseClassifier):
     st.set_page_config()
     st.markdown(
         """
@@ -35,7 +35,7 @@ def inference_app():
         st.markdown("#")
 
         st.markdown(
-            "<h3 style='text-align: center;'>Predicted Class</h3>",
+            "<h3 style='text-align: center;'>Predicted Category</h3>",
             unsafe_allow_html=True,
         )
 
@@ -46,4 +46,8 @@ def inference_app():
 
 
 if __name__ == "__main__":
-    inference_app()
+    config = PipelineConfig.load()
+
+    inference_app(
+        classifier_map[config.classifier_name].load(),
+    )

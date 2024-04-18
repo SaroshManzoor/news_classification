@@ -15,6 +15,7 @@ from news_classification.modelling.evaluation import (
     evaluate_classifier,
     generate_report,
 )
+from news_classification.utils.data_types import ArrayLike
 from news_classification.utils.paths import (
     get_model_registry_path,
 )
@@ -31,18 +32,47 @@ class BaseClassifier(ABC):
         self.model = None
         self.feature_extractor = feature_extractor
         self.evaluation_metrics: dict = {}
+        self.test_size = 0.2
 
     @abstractmethod
-    def train(self, headlines: pd.Series, categories: pd.Series, **kwargs):
+    def train(
+        self, headlines: pd.Series, categories: pd.Series, **kwargs
+    ) -> None:
+        """
+        Train the underlying <model> object with the headlines as input data
+        and categories as corresponding labels.
+
+        The implementations should also handle the split between validation
+        and training sets.
+
+        <evaluate> method is also called at the end of this method.
+
+        :param headlines:
+            series containing new headlines
+        :param categories:
+            series containing categories
+        :param kwargs:
+
+        :return:
+        """
         pass
 
     @abstractmethod
-    def predict(self, headlines, **kwargs) -> Iterable:
+    def predict(self, headlines: Iterable, **kwargs) -> Iterable:
         pass
 
-    def evaluate(self, x_test, y_test):
+    def evaluate(self, x_test: ArrayLike, y_test: ArrayLike):
+        """
+
+
+        :param x_test:
+        :param y_test:
+        :return:
+        """
         logging.info(f"Evaluating trained {self.NAME}")
+
         self.evaluation_metrics = evaluate_classifier(self, x_test, y_test)
+
         generate_report(self.evaluation_metrics, classifier_name=self.NAME)
 
     def save(self, path=None, **kwargs) -> None:
@@ -89,15 +119,15 @@ class BaseClassifier(ABC):
 
         artifacts = joblib.load(filename=path)
 
-        class_instance = cls(**kwargs)
-        class_instance.model = artifacts["model"]
-
         if artifacts["pickle_extractor"]:
             _extractor = artifacts["feature_extractor"]
         else:
             _extractor = feature_extractor_map[
                 artifacts["feature_extractor_name"]
             ]()
+
+        class_instance = cls(_extractor)
+        class_instance.model = artifacts["model"]
 
         class_instance.feature_extractor = _extractor
 

@@ -8,6 +8,7 @@ from sentence_transformers import SentenceTransformer
 from news_classification.data_handling.feature_extractors.base import (
     FeatureExtractor,
 )
+from news_classification.utils.paths import get_model_cache_path
 from news_classification.utils.utils import get_device
 
 
@@ -19,7 +20,9 @@ class EmbeddingsExtractor(FeatureExtractor):
         super().__init__()
 
         self.transformer = SentenceTransformer(
-            "all-MiniLM-L6-v2", device=get_device(), cache_folder="./.cache"
+            "all-MiniLM-L6-v2",
+            device=get_device(),
+            cache_folder=get_model_cache_path(),
         )
 
     def fit(self, data: Iterable) -> None:

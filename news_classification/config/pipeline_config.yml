@@ -9,10 +9,11 @@ results_filename: predictions.json
 # - - - - -  Data Preprocessing
 # Refining step merges similar classes. This mapping is defined in:
 # news_classification/config/class_corrections.py
-refine_classes: true
+refine_classes: false
 
 # Basic cleaning is performed on headlines
-preprocess: true
+# Consider setting to false for EmbeddingsExtractor
+preprocess: false
 
 # Lemmatize headlines. Only works if preprocess is true
 lemmatize: false
@@ -30,4 +31,4 @@ feature_extractor_name: EmbeddingsExtractor
 # - - - - -  Classifier
 # The name of the classifier to be trained. Full list at:
 # news_classification/modelling/classifiers/__init__.py
-classifier_name: BoostingClassifier
+classifier_name: LogisticRegressionClassifier
